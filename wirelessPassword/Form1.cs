@@ -15,16 +15,18 @@ namespace wirelessPassword
         public Form1()
         {
             InitializeComponent();
+           
             textBox1.Visible = false;
            textBox2.Visible = false;
            textBox3.Visible = false;
+          
             this.Text = "yavuz.akan@gmail.com";
             komut1();
             String data1 = textBox1.Text;
             data1 = data1.Replace("All User Profile     :", "");
             data1 = data1.Replace("-", "");
             string data = getBetween(data1, "User profiles", "000");
-            textBox2.Text = data.Replace(" ", "");
+            textBox2.Text = data;
             tocombo();
         }
 
@@ -87,7 +89,7 @@ namespace wirelessPassword
             string q = "";
             try
             {
-                String komut = "netsh wlan show profile "+comboBox1.Text+" key=clear";
+                String komut = "netsh wlan show profile "+'"'+comboBox1.Text.Trim() +'"'+ " key=clear";
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                 process.StartInfo.FileName = "cmd.exe";
@@ -99,7 +101,7 @@ namespace wirelessPassword
                 process.StartInfo.RedirectStandardInput = true;
                 process.Start();
 
-
+                textBox3.Text = komut;
 
 
                 while (!process.HasExited)
@@ -116,7 +118,7 @@ namespace wirelessPassword
                 q += "error";
 
             }
-            textBox3.Text = q;
+            textBox3.Text =  q;
 
         }
 
@@ -156,8 +158,9 @@ namespace wirelessPassword
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
