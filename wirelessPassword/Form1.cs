@@ -15,7 +15,7 @@ namespace wirelessPassword
         public Form1()
         {
             InitializeComponent();
-           
+        
             textBox1.Visible = false;
            textBox2.Visible = false;
            textBox3.Visible = false;
@@ -24,7 +24,7 @@ namespace wirelessPassword
             komut1();
             String data1 = textBox1.Text;
             data1 = data1.Replace("All User Profile     :", "");
-            data1 = data1.Replace("-", "");
+            //data1 = data1.Replace("-", "");
             string data = getBetween(data1, "User profiles", "000");
             textBox2.Text = data;
             tocombo();
